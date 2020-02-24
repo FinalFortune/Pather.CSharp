@@ -25,5 +25,10 @@ namespace Pather.CSharp.PathElements
             var result = p.GetValue(target);
             return result;
         }
+
+        public override Task<object> ApplyAsync(object target)
+        {
+            return Task.FromResult(Apply(target));
+        }
     }
 }

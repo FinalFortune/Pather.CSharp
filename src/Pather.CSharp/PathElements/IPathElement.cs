@@ -10,5 +10,7 @@ namespace Pather.CSharp.PathElements
     {
         object Apply(object target);
         IEnumerable Apply(Selection target);
+        Task<object> ApplyAsync(object target);
+        Task<IEnumerable> ApplyAsync(Selection target);
     }
 }

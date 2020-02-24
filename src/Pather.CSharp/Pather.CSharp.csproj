@@ -17,6 +17,7 @@
     <Version>2.1.0</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <AssemblyVersion>2.1.0.0</AssemblyVersion>
+    <RootNamespace>Pather.CSharp</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

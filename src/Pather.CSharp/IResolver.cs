@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Pather.CSharp.PathElements;
 
 namespace Pather.CSharp
@@ -17,6 +18,8 @@ namespace Pather.CSharp
         /// <returns></returns>
         object Resolve(object target, IList<IPathElement> pathElements);
 
+        Task<object> ResolveAsync(object target, IList<IPathElement> pathElements);
+
         /// <summary>
         /// Returns the object defined by the path.
         /// Any access exception (e.g. NullReference) is propagated.
@@ -24,6 +27,8 @@ namespace Pather.CSharp
         /// <param name="target"></param>
         /// <param name="path"></param>
         /// <returns></returns>
+
+        Task<object> ResolveAsync(object target, string path);
         object Resolve(object target, string path);
 
         /// <summary>

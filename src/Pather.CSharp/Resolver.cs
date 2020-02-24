@@ -58,6 +58,31 @@ namespace Pather.CSharp
             return Resolve(target, pathElements);
         }
 
+        public async Task<object> ResolveAsync(object target, string path)
+        {
+            var pathElements = CreatePath(path);
+            return await ResolveAsync(target, pathElements).ConfigureAwait(false);
+        }
+
+        public async Task<object> ResolveAsync(object target, IList<IPathElement> pathElements)
+        {
+            var tempResult = target;
+            foreach (var pathElement in pathElements)
+            {
+                if (tempResult is Selection)
+                    tempResult = await pathElement.ApplyAsync((Selection)tempResult).ConfigureAwait(false);
+                else
+                    tempResult = await pathElement.ApplyAsync(tempResult).ConfigureAwait(false);
+            }
+
+            var result = tempResult;
+
+            if (result is Selection)
+                return ((Selection)result).AsEnumerable();
+            else
+                return result;
+        }
+
         public object Resolve(object target, IList<IPathElement> pathElements)
         {
             var tempResult = target;
